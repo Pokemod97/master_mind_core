@@ -1,9 +1,23 @@
+use rand::Rng;
 fn vec_to_string(digits: Vec<u32>) -> String {
     let result: String = digits.iter().fold(String::new(), |mut result, x| {
         result.push_str(&x.to_string());
         result
     });
     result
+}
+fn generate_secret_number() -> [u32;6] {
+    let mut rand_generator = rand::thread_rng();
+    let secret_number: [u32; 6] = [
+        rand_generator.gen_range(0, 10),
+        rand_generator.gen_range(0, 10),
+        rand_generator.gen_range(0, 10),
+        rand_generator.gen_range(0, 10),
+        rand_generator.gen_range(0, 10),
+        rand_generator.gen_range(0, 10),
+    ];
+    secret_number
+
 }
 fn positions(secret_number: Vec<u32>,  guess: Vec<u32>) -> (u32,u32){
     let mut wrong_position: u32 = 0;
